@@ -60,7 +60,7 @@ const Header = () => {
         
         {/* Center fill animation */}
         <div 
-          className="absolute inset-0 bg-amber-900/85 backdrop-blur-md transition-all duration-500 ease-out"
+          className="absolute inset-0 bg-amber-300/85 backdrop-blur-md transition-all duration-500 ease-out"
           style={{
             clipPath: scrollDirection === 'down'
               ? `polygon(0 ${scrollProgress * 50}%, 100% ${scrollProgress * 50}%, 100% ${100 - scrollProgress * 50}%, 0 ${100 - scrollProgress * 50}%)`
