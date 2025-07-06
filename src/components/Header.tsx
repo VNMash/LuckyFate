@@ -49,7 +49,7 @@ const Header = () => {
         
         {/* Bottom edge animation */}
         <div 
-          className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-cyan-800/90 via-cyan-700/70 to-transparent backdrop-blur-md transition-all duration-700 ease-out"
+          className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-cyan-500/90 via-cyan-900/70 to-transparent backdrop-blur-md transition-all duration-700 ease-out"
           style={{
             clipPath: scrollDirection === 'down'
               ? `polygon(0 ${100 - scrollProgress * 50}%, 100% ${100 - scrollProgress * 50}%, 100% 100%, 0 100%)`
