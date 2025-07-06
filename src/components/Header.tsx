@@ -38,7 +38,7 @@ const Header = () => {
         
         {/* Top edge animation */}
         <div 
-          className="absolute top-0 left-0 right-0 h-full bg-gradient-to-b from-cyan-700/90 via-amber-800/70 to-transparent backdrop-blur-md transition-all duration-700 ease-out"
+          className="absolute top-0 left-0 right-0 h-full bg-gradient-to-b from-cyan-700/90 via-cyan-800/70 to-transparent backdrop-blur-md transition-all duration-700 ease-out"
           style={{
             clipPath: scrollDirection === 'down' 
               ? `polygon(0 0, 100% 0, 100% ${scrollProgress * 50}%, 0 ${scrollProgress * 50}%)`
