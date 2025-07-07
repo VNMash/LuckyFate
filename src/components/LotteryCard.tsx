@@ -115,12 +115,30 @@ const LotteryCard: React.FC<LotteryCardProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col space-y-3">
           <div>
             <span className="text-2xl font-bold text-amber-700">{ticketPrice} ₴</span>
             <span className="text-amber-600 text-sm ml-1">/ квиток</span>
           </div>
-          <button className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+          
+          <div className="flex flex-col space-y-2">
+            <button className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2 w-full">
+              <Ticket className="h-4 w-4" />
+              <span>Взяти участь у лотереї</span>
+            </button>
+            
+            <button className="bg-gradient-to-r from-red-600 to-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2 w-full border-2 border-red-400/30">
+              <span className="text-lg">⚡</span>
+              <span>Купити ЗАРАЗ</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default LotteryCard;
             <Ticket className="h-4 w-4" />
             <span>Купити</span>
           </button>
