@@ -139,13 +139,3 @@ const LotteryCard: React.FC<LotteryCardProps> = ({
 };
 
 export default LotteryCard;
-            <Ticket className="h-4 w-4" />
-            <span>Купити</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default LotteryCard;
