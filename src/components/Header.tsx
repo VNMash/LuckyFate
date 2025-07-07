@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Search, User, Bell, Menu, X, Trophy, Ticket } from 'lucide-react';
-import { useScrollToSection } from '../hooks/useParallax';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [scrollDirection, setScrollDirection] = useState('down');
   const [lastScrollY, setLastScrollY] = useState(0);
-  const scrollToSection = useScrollToSection();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,17 +32,11 @@ const Header = () => {
   const scrollProgress = Math.min(scrollY / 300, 1);
 
   const navigationItems = [
-    { label: 'Активні лотереї', href: '#featured-lotteries' },
-    { label: 'Категорії', href: '#categories' },
-    { label: 'Переможці', href: '#winners' },
-    { label: 'Як це працює', href: '#how-it-works' }
+    { label: 'Головна', href: '/' },
+    { label: 'Переможці', href: '/winners' },
+    { label: 'Мої квитки', href: '/my-tickets' },
+    { label: 'Профіль', href: '/profile' }
   ];
-
-  const handleNavClick = (href: string) => {
-    const sectionId = href.replace('#', '');
-    scrollToSection(sectionId);
-    setIsMenuOpen(false);
-  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-red-700/10 shadow-lg overflow-hidden">
@@ -88,7 +82,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div 
               className="p-2 rounded-lg shadow-lg transition-all duration-500"
               style={{
@@ -112,22 +106,24 @@ const Header = () => {
             >
               LuckyHub
             </span>
-          </div>
+          </Link>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navigationItems.map((item) => (
-              <button 
+              <Link
                 key={item.label}
-                onClick={() => handleNavClick(item.href)}
-                className="font-medium transition-all duration-300 hover:scale-105"
+                to={item.href}
+                className={`font-medium transition-all duration-300 hover:scale-105 ${
+                  location.pathname === item.href ? 'border-b-2 border-yellow-400' : ''
+                }`}
                 style={{
                   color: scrollProgress > 0.2 ? '#fef3c7' : '#f0f9ff',
                   textShadow: scrollProgress > 0.2 ? '1px 1px 2px rgba(0,0,0,0.5)' : 'none'
                 }}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -167,25 +163,26 @@ const Header = () => {
             </button>
             <button 
               className="hidden md:flex items-center space-x-2 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
-              onClick={() => scrollToSection('my-tickets')}
               style={{
                 background: scrollProgress > 0.2
                   ? 'linear-gradient(135deg, #d97706, #f59e0b)'
                   : 'linear-gradient(135deg, #d97706, #f59e0b)'
               }}
             >
+              <Link to="/my-tickets" className="flex items-center space-x-2">
               <Ticket className="h-4 w-4" />
               <span>Мої квитки</span>
+              </Link>
             </button>
-            <button
-              onClick={() => scrollToSection('profile')}
+            <Link
+              to="/profile"
               className="p-2 transition-all duration-300 hover:scale-110"
               style={{ 
                 color: scrollProgress > 0.2 ? '#fde68a' : '#fde68a' 
               }}
             >
               <User className="h-5 w-5" />
-            </button>
+            </Link>
             <button 
               className="md:hidden p-2 transition-all duration-300 hover:scale-110"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -214,35 +211,20 @@ const Header = () => {
         >
           <div className="px-4 py-2 space-y-1">
             {navigationItems.map((item) => (
-              <button 
+              <Link
                 key={item.label}
-                onClick={() => handleNavClick(item.href)}
-                className="block px-3 py-2 font-medium transition-all duration-300 hover:bg-amber-700/30 rounded"
+                to={item.href}
+                onClick={() => setIsMenuOpen(false)}
+                className={`block px-3 py-2 font-medium transition-all duration-300 hover:bg-amber-700/30 rounded ${
+                  location.pathname === item.href ? 'bg-amber-700/50' : ''
+                }`}
                 style={{
                   color: scrollProgress > 0.2 ? '#fef3c7' : '#f0f9ff'
                 }}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
-            <button 
-              onClick={() => handleNavClick('#my-tickets')}
-              className="block px-3 py-2 font-medium transition-all duration-300 hover:bg-amber-700/30 rounded w-full text-left"
-              style={{
-                color: scrollProgress > 0.2 ? '#fef3c7' : '#f0f9ff'
-              }}
-            >
-              Мої квитки
-            </button>
-            <button 
-              onClick={() => handleNavClick('#profile')}
-              className="block px-3 py-2 font-medium transition-all duration-300 hover:bg-amber-700/30 rounded w-full text-left"
-              style={{
-                color: scrollProgress > 0.2 ? '#fef3c7' : '#f0f9ff'
-              }}
-            >
-              Профіль
-            </button>
           </div>
         </div>
       )}
