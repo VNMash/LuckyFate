@@ -5,6 +5,9 @@ import FeaturedLotteries from './components/FeaturedLotteries';
 import Categories from './components/Categories';
 import AllLotteries from './components/AllLotteries';
 import HowItWorks from './components/HowItWorks';
+import Winners from './components/Winners';
+import MyTickets from './components/MyTickets';
+import Profile from './components/Profile';
 import Footer from './components/Footer';
 
 function App() {
@@ -21,10 +24,19 @@ function App() {
     >
       <Header />
       <Hero />
-      <FeaturedLotteries />
-      <Categories />
+      <div id="featured-lotteries">
+        <FeaturedLotteries />
+      </div>
+      <div id="categories">
+        <Categories />
+      </div>
       <AllLotteries />
-      <HowItWorks />
+      <div id="how-it-works">
+        <HowItWorks />
+      </div>
+      <Winners />
+      <MyTickets />
+      <Profile />
       <Footer />
     </div>
   );

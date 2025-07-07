@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Search, User, Bell, Menu, X, Trophy, Ticket } from 'lucide-react';
+import { useScrollToSection } from '../hooks/useParallax';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [scrollDirection, setScrollDirection] = useState('down');
   const [lastScrollY, setLastScrollY] = useState(0);
+  const scrollToSection = useScrollToSection();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +30,19 @@ const Header = () => {
 
   // Calculate opacity based on scroll position (0-100)
   const scrollProgress = Math.min(scrollY / 300, 1);
+
+  const navigationItems = [
+    { label: 'Активні лотереї', href: '#featured-lotteries' },
+    { label: 'Категорії', href: '#categories' },
+    { label: 'Переможці', href: '#winners' },
+    { label: 'Як це працює', href: '#how-it-works' }
+  ];
+
+  const handleNavClick = (href: string) => {
+    const sectionId = href.replace('#', '');
+    scrollToSection(sectionId);
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-red-700/10 shadow-lg overflow-hidden">
@@ -101,18 +116,18 @@ const Header = () => {
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {['Активні лотереї', 'Категорії', 'Переможці', 'Як це працює'].map((item) => (
-              <a 
-                key={item}
-                href="#" 
+            {navigationItems.map((item) => (
+              <button 
+                key={item.label}
+                onClick={() => handleNavClick(item.href)}
                 className="font-medium transition-all duration-300 hover:scale-105"
                 style={{
                   color: scrollProgress > 0.2 ? '#fef3c7' : '#f0f9ff',
                   textShadow: scrollProgress > 0.2 ? '1px 1px 2px rgba(0,0,0,0.5)' : 'none'
                 }}
               >
-                {item}
-              </a>
+                {item.label}
+              </button>
             ))}
           </nav>
 
@@ -152,6 +167,7 @@ const Header = () => {
             </button>
             <button 
               className="hidden md:flex items-center space-x-2 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+              onClick={() => scrollToSection('my-tickets')}
               style={{
                 background: scrollProgress > 0.2
                   ? 'linear-gradient(135deg, #d97706, #f59e0b)'
@@ -161,7 +177,8 @@ const Header = () => {
               <Ticket className="h-4 w-4" />
               <span>Мої квитки</span>
             </button>
-            <button 
+            <button
+              onClick={() => scrollToSection('profile')}
               className="p-2 transition-all duration-300 hover:scale-110"
               style={{ 
                 color: scrollProgress > 0.2 ? '#fde68a' : '#fde68a' 
@@ -196,18 +213,36 @@ const Header = () => {
           }}
         >
           <div className="px-4 py-2 space-y-1">
-            {['Активні лотереї', 'Категорії', 'Переможці', 'Як це працює'].map((item) => (
-              <a 
-                key={item}
-                href="#" 
+            {navigationItems.map((item) => (
+              <button 
+                key={item.label}
+                onClick={() => handleNavClick(item.href)}
                 className="block px-3 py-2 font-medium transition-all duration-300 hover:bg-amber-700/30 rounded"
                 style={{
                   color: scrollProgress > 0.2 ? '#fef3c7' : '#f0f9ff'
                 }}
               >
-                {item}
-              </a>
+                {item.label}
+              </button>
             ))}
+            <button 
+              onClick={() => handleNavClick('#my-tickets')}
+              className="block px-3 py-2 font-medium transition-all duration-300 hover:bg-amber-700/30 rounded w-full text-left"
+              style={{
+                color: scrollProgress > 0.2 ? '#fef3c7' : '#f0f9ff'
+              }}
+            >
+              Мої квитки
+            </button>
+            <button 
+              onClick={() => handleNavClick('#profile')}
+              className="block px-3 py-2 font-medium transition-all duration-300 hover:bg-amber-700/30 rounded w-full text-left"
+              style={{
+                color: scrollProgress > 0.2 ? '#fef3c7' : '#f0f9ff'
+              }}
+            >
+              Профіль
+            </button>
           </div>
         </div>
       )}
