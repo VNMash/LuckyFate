@@ -34,7 +34,6 @@ const Header = () => {
   const navigationItems = [
     { label: 'Головна', href: '/' },
     { label: 'Переможці', href: '/winners' },
-    { label: 'Мої квитки', href: '/my-tickets' },
     { label: 'Профіль', href: '/profile' }
   ];
 
@@ -82,7 +81,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-3">
             <div 
               className="p-2 rounded-lg shadow-lg transition-all duration-500"
               style={{
@@ -109,7 +108,7 @@ const Header = () => {
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8 ml-12">
             {navigationItems.map((item) => (
               <Link
                 key={item.label}
@@ -153,15 +152,8 @@ const Header = () => {
 
           {/* User Actions */}
           <div className="flex items-center space-x-4">
-            <button 
-              className="p-2 transition-all duration-300 hover:scale-110"
-              style={{ 
-                color: scrollProgress > 0.2 ? '#fde68a' : '#fde68a' 
-              }}
-            >
-              <Bell className="h-5 w-5" />
-            </button>
-            <button 
+            <Link
+              to="/my-tickets"
               className="hidden md:flex items-center space-x-2 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
               style={{
                 background: scrollProgress > 0.2
@@ -169,19 +161,8 @@ const Header = () => {
                   : 'linear-gradient(135deg, #d97706, #f59e0b)'
               }}
             >
-              <Link to="/my-tickets" className="flex items-center space-x-2">
               <Ticket className="h-4 w-4" />
               <span>Мої квитки</span>
-              </Link>
-            </button>
-            <Link
-              to="/profile"
-              className="p-2 transition-all duration-300 hover:scale-110"
-              style={{ 
-                color: scrollProgress > 0.2 ? '#fde68a' : '#fde68a' 
-              }}
-            >
-              <User className="h-5 w-5" />
             </Link>
             <button 
               className="md:hidden p-2 transition-all duration-300 hover:scale-110"
