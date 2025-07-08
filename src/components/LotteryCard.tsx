@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, Users, Ticket, Heart, Share2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../contexts/UserContext';
 
 interface LotteryCardProps {
   id: string;
@@ -27,6 +29,8 @@ const LotteryCard: React.FC<LotteryCardProps> = ({
 }) => {
   const [timeLeft, setTimeLeft] = useState('');
   const [isLiked, setIsLiked] = useState(false);
+  const navigate = useNavigate();
+  const { balance, purchaseTicket } = useUser();
   
   useEffect(() => {
     const timer = setInterval(() => {
@@ -49,6 +53,15 @@ const LotteryCard: React.FC<LotteryCardProps> = ({
   }, [endDate]);
 
   const progress = (soldTickets / totalTickets) * 100;
+  
+  const handlePurchase = (type: 'participate' | 'buy-now') => {
+    if (balance >= ticketPrice) {
+      purchaseTicket(ticketPrice);
+      navigate('/my-tickets');
+    } else {
+      alert('Недостатньо коштів на балансі!');
+    }
+  };
 
   return (
     <div className={`group relative bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-amber-200/50 ${featured ? 'ring-2 ring-yellow-400' : ''}`}>
@@ -122,12 +135,18 @@ const LotteryCard: React.FC<LotteryCardProps> = ({
           </div>
           
           <div className="flex flex-col space-y-2">
-            <button className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2 w-full">
+            <button 
+              onClick={() => handlePurchase('participate')}
+              className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2 w-full"
+            >
               <Ticket className="h-4 w-4" />
               <span>Взяти участь у лотереї</span>
             </button>
             
-            <button className="bg-gradient-to-r from-red-600 to-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2 w-full border-2 border-red-400/30">
+            <button 
+              onClick={() => handlePurchase('buy-now')}
+              className="bg-gradient-to-r from-red-600 to-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2 w-full border-2 border-red-400/30"
+            >
               <span className="text-lg">⚡</span>
               <span>Купити ЗАРАЗ</span>
             </button>

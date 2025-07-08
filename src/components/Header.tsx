@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Search, User, Bell, Menu, X, Trophy, Ticket } from 'lucide-react';
+import { Search, User, Bell, Menu, X, Trophy, Ticket, Wallet } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useUser } from '../contexts/UserContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,6 +9,7 @@ const Header = () => {
   const [scrollDirection, setScrollDirection] = useState('down');
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
+  const { balance } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -127,7 +129,7 @@ const Header = () => {
           </nav>
 
           {/* Search */}
-          <div className="hidden md:flex items-center flex-1 max-w-md mx-8">
+          <div className="hidden md:flex items-center flex-1 max-w-xs mx-6">
             <div className="relative w-full">
               <Search 
                 className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 transition-colors duration-300"
@@ -147,6 +149,33 @@ const Header = () => {
                   backdropFilter: 'blur(8px)'
                 }}
               />
+            </div>
+          </div>
+
+          {/* User Balance Widget */}
+          <div className="hidden md:flex items-center mr-4">
+            <div 
+              className="flex items-center space-x-2 px-4 py-2 rounded-lg border transition-all duration-300"
+              style={{
+                backgroundColor: scrollProgress > 0.2 
+                  ? 'rgba(146, 64, 14, 0.7)' 
+                  : 'rgba(146, 64, 14, 0.5)',
+                borderColor: scrollProgress > 0.2 
+                  ? 'rgba(217, 119, 6, 0.6)' 
+                  : 'rgba(217, 119, 6, 0.5)',
+                backdropFilter: 'blur(8px)'
+              }}
+            >
+              <Wallet 
+                className="h-4 w-4 transition-colors duration-300"
+                style={{ color: scrollProgress > 0.2 ? '#fbbf24' : '#fbbf24' }}
+              />
+              <span 
+                className="font-semibold text-sm transition-colors duration-300"
+                style={{ color: scrollProgress > 0.2 ? '#fef3c7' : '#f0f9ff' }}
+              >
+                ₴{balance.toLocaleString()}
+              </span>
             </div>
           </div>
 
@@ -206,6 +235,14 @@ const Header = () => {
                 {item.label}
               </Link>
             ))}
+            
+            {/* Mobile Balance */}
+            <div className="px-3 py-2 bg-amber-700/50 rounded border border-amber-600/50 backdrop-blur-sm">
+              <div className="flex items-center space-x-2">
+                <Wallet className="h-4 w-4 text-amber-300" />
+                <span className="text-amber-100 font-semibold text-sm">₴{balance.toLocaleString()}</span>
+              </div>
+            </div>
           </div>
         </div>
       )}
