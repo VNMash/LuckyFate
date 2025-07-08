@@ -161,8 +161,16 @@ const MyTickets = () => {
           </div>
 
           {/* Stats Dashboard */}
-          <div className="grid md:grid-cols-4 gap-6 mb-12">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-emerald-200">
+          <div className="grid md:grid-cols-4 gap-6 mb-12" style={{ perspective: '1000px' }}>
+            <div 
+              className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-emerald-200 transform hover:scale-105 transition-all duration-500"
+              style={{ 
+                animation: 'slideInFromLeft 0.8s ease-out forwards',
+                animationDelay: '0.1s',
+                opacity: 0,
+                transform: 'translateX(-50px) rotateY(-15deg)'
+              }}
+            >
               <div className="flex items-center space-x-3">
                 <div className="bg-emerald-100 p-3 rounded-full">
                   <Ticket className="h-6 w-6 text-emerald-600" />
@@ -174,7 +182,15 @@ const MyTickets = () => {
               </div>
             </div>
             
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-200">
+            <div 
+              className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-200 transform hover:scale-105 transition-all duration-500"
+              style={{ 
+                animation: 'slideInFromTop 0.8s ease-out forwards',
+                animationDelay: '0.2s',
+                opacity: 0,
+                transform: 'translateY(-50px) rotateX(15deg)'
+              }}
+            >
               <div className="flex items-center space-x-3">
                 <div className="bg-blue-100 p-3 rounded-full">
                   <Clock className="h-6 w-6 text-blue-600" />
@@ -186,7 +202,15 @@ const MyTickets = () => {
               </div>
             </div>
             
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-green-200">
+            <div 
+              className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-green-200 transform hover:scale-105 transition-all duration-500"
+              style={{ 
+                animation: 'slideInFromBottom 0.8s ease-out forwards',
+                animationDelay: '0.3s',
+                opacity: 0,
+                transform: 'translateY(50px) rotateX(-15deg)'
+              }}
+            >
               <div className="flex items-center space-x-3">
                 <div className="bg-green-100 p-3 rounded-full">
                   <Trophy className="h-6 w-6 text-green-600" />
@@ -198,7 +222,15 @@ const MyTickets = () => {
               </div>
             </div>
             
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-purple-200">
+            <div 
+              className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-purple-200 transform hover:scale-105 transition-all duration-500"
+              style={{ 
+                animation: 'slideInFromRight 0.8s ease-out forwards',
+                animationDelay: '0.4s',
+                opacity: 0,
+                transform: 'translateX(50px) rotateY(15deg)'
+              }}
+            >
               <div className="flex items-center space-x-3">
                 <div className="bg-purple-100 p-3 rounded-full">
                   <span className="text-purple-600 font-bold">₴</span>
@@ -212,7 +244,15 @@ const MyTickets = () => {
           </div>
 
           {/* Filters */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 mb-12 shadow-lg border border-gray-200">
+          <div 
+            className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 mb-12 shadow-lg border border-gray-200 transform hover:shadow-2xl transition-all duration-500"
+            style={{ 
+              animation: 'fadeInScale 0.8s ease-out forwards',
+              animationDelay: '0.5s',
+              opacity: 0,
+              transform: 'scale(0.9)'
+            }}
+          >
             <div className="flex flex-col lg:flex-row gap-6 items-center">
               {/* Search */}
               <div className="relative flex-1 max-w-md">
@@ -254,10 +294,12 @@ const MyTickets = () => {
             {filteredTickets.map((ticket, index) => (
               <div 
                 key={ticket.id}
-                className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200 group hover:scale-[1.02]"
+                className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200 group hover:scale-[1.02] hover:rotate-1"
                 style={{ 
-                  animationDelay: `${index * 100}ms`,
-                  animation: 'slideInLeft 0.6s ease-out forwards'
+                  animation: 'cardSlideIn 0.8s ease-out forwards',
+                  animationDelay: `${0.6 + index * 0.1}s`,
+                  opacity: 0,
+                  transform: 'translateX(-100px) rotateY(-20deg)'
                 }}
               >
                 <div className="p-6">
@@ -356,14 +398,69 @@ const MyTickets = () => {
       </div>
 
       <style jsx>{`
-        @keyframes slideInLeft {
+        @keyframes slideInFromLeft {
           from {
             opacity: 0;
-            transform: translateX(-30px);
+            transform: translateX(-50px) rotateY(-15deg);
           }
           to {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0) rotateY(0deg);
+          }
+        }
+        
+        @keyframes slideInFromRight {
+          from {
+            opacity: 0;
+            transform: translateX(50px) rotateY(15deg);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0) rotateY(0deg);
+          }
+        }
+        
+        @keyframes slideInFromTop {
+          from {
+            opacity: 0;
+            transform: translateY(-50px) rotateX(15deg);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg);
+          }
+        }
+        
+        @keyframes slideInFromBottom {
+          from {
+            opacity: 0;
+            transform: translateY(50px) rotateX(-15deg);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg);
+          }
+        }
+        
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        @keyframes cardSlideIn {
+          from {
+            opacity: 0;
+            transform: translateX(-100px) rotateY(-20deg);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0) rotateY(0deg);
           }
         }
       `}</style>

@@ -121,9 +121,17 @@ const Profile = () => {
 
           <div className="grid lg:grid-cols-4 gap-8">
             {/* Sidebar */}
-            <div className="lg:col-span-1">
+            <div 
+              className="lg:col-span-1"
+              style={{ 
+                animation: 'slideInFromLeft 0.8s ease-out forwards',
+                animationDelay: '0.1s',
+                opacity: 0,
+                transform: 'translateX(-50px)'
+              }}
+            >
               {/* Profile Card */}
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6 mb-6">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6 mb-6 hover:shadow-2xl hover:scale-105 transition-all duration-500">
                 <div className="text-center">
                   <div className="relative inline-block mb-4">
                     <img 
@@ -144,7 +152,7 @@ const Profile = () => {
               </div>
 
               {/* Navigation */}
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 overflow-hidden">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 overflow-hidden hover:shadow-2xl transition-all duration-500">
                 {tabs.map(tab => {
                   const IconComponent = tab.icon;
                   return (
@@ -166,12 +174,27 @@ const Profile = () => {
             </div>
 
             {/* Main Content */}
-            <div className="lg:col-span-3">
+            <div 
+              className="lg:col-span-3"
+              style={{ 
+                animation: 'slideInFromRight 0.8s ease-out forwards',
+                animationDelay: '0.2s',
+                opacity: 0,
+                transform: 'translateX(50px)'
+              }}
+            >
               {activeTab === 'overview' && (
                 <div className="space-y-8">
                   {/* Stats Grid */}
-                  <div className="grid md:grid-cols-4 gap-6">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-200">
+                  <div className="grid md:grid-cols-4 gap-6" style={{ perspective: '1000px' }}>
+                    <div 
+                      className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-200 hover:scale-105 hover:rotate-2 transition-all duration-500"
+                      style={{ 
+                        animation: 'bounceInLeft 0.8s ease-out forwards',
+                        animationDelay: '0.3s',
+                        opacity: 0
+                      }}
+                    >
                       <div className="flex items-center space-x-3">
                         <div className="bg-blue-100 p-3 rounded-full">
                           <Ticket className="h-6 w-6 text-blue-600" />
@@ -183,7 +206,14 @@ const Profile = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-green-200">
+                    <div 
+                      className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-green-200 hover:scale-105 hover:-rotate-2 transition-all duration-500"
+                      style={{ 
+                        animation: 'bounceInUp 0.8s ease-out forwards',
+                        animationDelay: '0.4s',
+                        opacity: 0
+                      }}
+                    >
                       <div className="flex items-center space-x-3">
                         <div className="bg-green-100 p-3 rounded-full">
                           <Trophy className="h-6 w-6 text-green-600" />
@@ -195,7 +225,14 @@ const Profile = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-purple-200">
+                    <div 
+                      className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-purple-200 hover:scale-105 hover:rotate-2 transition-all duration-500"
+                      style={{ 
+                        animation: 'bounceInDown 0.8s ease-out forwards',
+                        animationDelay: '0.5s',
+                        opacity: 0
+                      }}
+                    >
                       <div className="flex items-center space-x-3">
                         <div className="bg-purple-100 p-3 rounded-full">
                           <span className="text-purple-600 font-bold text-lg">₴</span>
@@ -207,7 +244,14 @@ const Profile = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-orange-200">
+                    <div 
+                      className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-orange-200 hover:scale-105 hover:-rotate-2 transition-all duration-500"
+                      style={{ 
+                        animation: 'bounceInRight 0.8s ease-out forwards',
+                        animationDelay: '0.6s',
+                        opacity: 0
+                      }}
+                    >
                       <div className="flex items-center space-x-3">
                         <div className="bg-orange-100 p-3 rounded-full">
                           <Star className="h-6 w-6 text-orange-600" />
@@ -221,7 +265,14 @@ const Profile = () => {
                   </div>
 
                   {/* Favorite Categories */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6">
+                  <div 
+                    className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500"
+                    style={{ 
+                      animation: 'fadeInScale 0.8s ease-out forwards',
+                      animationDelay: '0.7s',
+                      opacity: 0
+                    }}
+                  >
                     <h3 className="text-xl font-bold text-gray-800 mb-4">Улюблені категорії</h3>
                     <div className="flex flex-wrap gap-3">
                       {userProfile.favoriteCategories.map(category => (
@@ -236,12 +287,33 @@ const Profile = () => {
                   </div>
 
                   {/* Recent Activity */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6">
+                  <div 
+                    className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500"
+                    style={{ 
+                      animation: 'fadeInScale 0.8s ease-out forwards',
+                      animationDelay: '0.8s',
+                      opacity: 0
+                    }}
+                  >
                     <h3 className="text-xl font-bold text-gray-800 mb-4">Остання активність</h3>
                     <div className="space-y-4">
-                      <div className="flex items-center space-x-4 p-4 bg-green-50 rounded-lg border border-green-200">
-                        <div className="bg-green-100 p-2 rounded-full">
-                          <Trophy className="h-5 w-5 text-green-600" />
+                      <div 
+                        className="flex items-center space-x-4 p-4 bg-green-50 rounded-lg border border-green-200 hover:shadow-md hover:scale-[1.02] transition-all duration-300"
+                        style={{ 
+                          animation: 'slideInFromLeft 0.6s ease-out forwards',
+                          animationDelay: '0.9s',
+                          opacity: 0
+                        }}
+                      >
+                        <div className="relative">
+                          <img 
+                            src="https://images.pexels.com/photos/3136673/pexels-photo-3136673.jpeg?auto=compress&cs=tinysrgb&w=100" 
+                            alt="BMW X5 2024"
+                            className="w-12 h-12 rounded-lg object-cover border-2 border-green-300"
+                          />
+                          <div className="absolute -top-1 -right-1 bg-green-500 p-1 rounded-full">
+                            <Trophy className="h-3 w-3 text-white" />
+                          </div>
                         </div>
                         <div className="flex-1">
                           <div className="font-medium text-gray-800">Виграв BMW X5 2024</div>
@@ -249,9 +321,23 @@ const Profile = () => {
                         </div>
                       </div>
                       
-                      <div className="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                        <div className="bg-blue-100 p-2 rounded-full">
-                          <Ticket className="h-5 w-5 text-blue-600" />
+                      <div 
+                        className="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg border border-blue-200 hover:shadow-md hover:scale-[1.02] transition-all duration-300"
+                        style={{ 
+                          animation: 'slideInFromLeft 0.6s ease-out forwards',
+                          animationDelay: '1.0s',
+                          opacity: 0
+                        }}
+                      >
+                        <div className="relative">
+                          <img 
+                            src="https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=100" 
+                            alt="iPhone 15 Pro Max"
+                            className="w-12 h-12 rounded-lg object-cover border-2 border-blue-300"
+                          />
+                          <div className="absolute -top-1 -right-1 bg-blue-500 p-1 rounded-full">
+                            <Ticket className="h-3 w-3 text-white" />
+                          </div>
                         </div>
                         <div className="flex-1">
                           <div className="font-medium text-gray-800">Купив квиток на iPhone 15 Pro Max</div>
@@ -264,16 +350,24 @@ const Profile = () => {
               )}
 
               {activeTab === 'achievements' && (
-                <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6">
+                <div 
+                  className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6 hover:shadow-2xl transition-all duration-500"
+                  style={{ 
+                    animation: 'fadeInScale 0.8s ease-out forwards',
+                    animationDelay: '0.3s',
+                    opacity: 0
+                  }}
+                >
                   <h3 className="text-xl font-bold text-gray-800 mb-6">Досягнення</h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     {userProfile.achievements.map((achievement, index) => (
                       <div 
                         key={achievement.id}
-                        className={`p-6 rounded-2xl border-2 ${getRarityBorder(achievement.rarity)} bg-gradient-to-br ${getRarityColor(achievement.rarity)} bg-opacity-10 hover:scale-105 transition-all duration-300`}
+                        className={`p-6 rounded-2xl border-2 ${getRarityBorder(achievement.rarity)} bg-gradient-to-br ${getRarityColor(achievement.rarity)} bg-opacity-10 hover:scale-110 hover:rotate-3 transition-all duration-500 hover:shadow-2xl`}
                         style={{ 
-                          animationDelay: `${index * 150}ms`,
-                          animation: 'bounceIn 0.6s ease-out forwards'
+                          animation: 'achievementBounce 0.8s ease-out forwards',
+                          animationDelay: `${0.4 + index * 0.1}s`,
+                          opacity: 0
                         }}
                       >
                         <div className="text-center">
@@ -293,7 +387,14 @@ const Profile = () => {
               {activeTab === 'settings' && (
                 <div className="space-y-6">
                   {/* Personal Information */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6">
+                  <div 
+                    className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500"
+                    style={{ 
+                      animation: 'slideInFromTop 0.8s ease-out forwards',
+                      animationDelay: '0.3s',
+                      opacity: 0
+                    }}
+                  >
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="text-xl font-bold text-gray-800">Особиста інформація</h3>
                       <button className="flex items-center space-x-2 text-indigo-600 hover:text-indigo-700">
@@ -324,7 +425,14 @@ const Profile = () => {
                   </div>
 
                   {/* Security Settings */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6">
+                  <div 
+                    className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500"
+                    style={{ 
+                      animation: 'slideInFromLeft 0.8s ease-out forwards',
+                      animationDelay: '0.4s',
+                      opacity: 0
+                    }}
+                  >
                     <h3 className="text-xl font-bold text-gray-800 mb-6">Безпека</h3>
                     <div className="space-y-4">
                       <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
@@ -357,7 +465,14 @@ const Profile = () => {
                   </div>
 
                   {/* Payment Methods */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6">
+                  <div 
+                    className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-indigo-200 p-6 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500"
+                    style={{ 
+                      animation: 'slideInFromRight 0.8s ease-out forwards',
+                      animationDelay: '0.5s',
+                      opacity: 0
+                    }}
+                  >
                     <h3 className="text-xl font-bold text-gray-800 mb-6">Способи оплати</h3>
                     <div className="space-y-4">
                       <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
@@ -386,21 +501,137 @@ const Profile = () => {
       </div>
 
       <style jsx>{`
-        @keyframes bounceIn {
+        @keyframes slideInFromLeft {
           0% {
             opacity: 0;
-            transform: scale(0.3);
+            transform: translateX(-50px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes slideInFromRight {
+          0% {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes slideInFromTop {
+          0% {
+            opacity: 0;
+            transform: translateY(-30px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes bounceInLeft {
+          0% {
+            opacity: 0;
+            transform: translateX(-100px) scale(0.3);
           }
           50% {
             opacity: 1;
-            transform: scale(1.05);
+            transform: translateX(10px) scale(1.05);
           }
           70% {
-            transform: scale(0.9);
+            transform: translateX(-5px) scale(0.9);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
+        }
+        
+        @keyframes bounceInRight {
+          0% {
+            opacity: 0;
+            transform: translateX(100px) scale(0.3);
+          }
+          50% {
+            opacity: 1;
+            transform: translateX(-10px) scale(1.05);
+          }
+          70% {
+            transform: translateX(5px) scale(0.9);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
+        }
+        
+        @keyframes bounceInUp {
+          0% {
+            opacity: 0;
+            transform: translateY(100px) scale(0.3);
+          }
+          50% {
+            opacity: 1;
+            transform: translateY(-10px) scale(1.05);
+          }
+          70% {
+            transform: translateY(5px) scale(0.9);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+        
+        @keyframes bounceInDown {
+          0% {
+            opacity: 0;
+            transform: translateY(-100px) scale(0.3);
+          }
+          50% {
+            opacity: 1;
+            transform: translateY(10px) scale(1.05);
+          }
+          70% {
+            transform: translateY(-5px) scale(0.9);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+        
+        @keyframes fadeInScale {
+          0% {
+            opacity: 0;
+            transform: scale(0.8);
           }
           100% {
             opacity: 1;
             transform: scale(1);
+          }
+        }
+        
+        @keyframes achievementBounce {
+          0% {
+            opacity: 0;
+            transform: scale(0.3) rotate(-180deg);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.1) rotate(-90deg);
+          }
+          70% {
+            transform: scale(0.9) rotate(-45deg);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
           }
         }
       `}</style>
