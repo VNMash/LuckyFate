@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { User, Settings, Trophy, Ticket, Calendar, Star, Edit, Camera, Shield, Bell, CreditCard, Gift } from 'lucide-react';
 import { useParallax } from '../hooks/useParallax';
+import { useUser } from '../contexts/UserContext';
 import type { UserProfile, Achievement } from '../types/navigation';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const parallaxOffset = useParallax(0.15);
+  const { totalTickets, totalSpent } = useUser();
 
   const userProfile: UserProfile = {
     id: '1',
@@ -13,9 +15,9 @@ const Profile = () => {
     email: 'oleksandr.petrenko@email.com',
     avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300',
     joinDate: '2023-03-15',
-    totalTickets: 47,
+    totalTickets,
     totalWins: 3,
-    totalSpent: 8750,
+    totalSpent,
     favoriteCategories: ['Електроніка', 'Автомобілі', 'Подорожі'],
     achievements: [
       {
@@ -175,7 +177,7 @@ const Profile = () => {
                           <Ticket className="h-6 w-6 text-blue-600" />
                         </div>
                         <div>
-                          <div className="text-2xl font-bold text-blue-600">{userProfile.totalTickets}</div>
+                          <div className="text-2xl font-bold text-blue-600">{totalTickets}</div>
                           <div className="text-gray-600 text-sm">Квитків куплено</div>
                         </div>
                       </div>
@@ -199,7 +201,7 @@ const Profile = () => {
                           <span className="text-purple-600 font-bold text-lg">₴</span>
                         </div>
                         <div>
-                          <div className="text-2xl font-bold text-purple-600">₴{userProfile.totalSpent.toLocaleString()}</div>
+                          <div className="text-2xl font-bold text-purple-600">₴{totalSpent.toLocaleString()}</div>
                           <div className="text-gray-600 text-sm">Витрачено</div>
                         </div>
                       </div>
@@ -211,7 +213,7 @@ const Profile = () => {
                           <Star className="h-6 w-6 text-orange-600" />
                         </div>
                         <div>
-                          <div className="text-2xl font-bold text-orange-600">{Math.round((userProfile.totalWins / userProfile.totalTickets) * 100)}%</div>
+                          <div className="text-2xl font-bold text-orange-600">{Math.round((userProfile.totalWins / totalTickets) * 100)}%</div>
                           <div className="text-gray-600 text-sm">Успішність</div>
                         </div>
                       </div>

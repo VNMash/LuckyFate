@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Ticket, Calendar, Clock, Trophy, Filter, Search, Eye, Download, Share2 } from 'lucide-react';
 import { useParallax } from '../hooks/useParallax';
+import { useUser } from '../contexts/UserContext';
 import type { UserTicket } from '../types/navigation';
 
 const MyTickets = () => {
   const [selectedStatus, setSelectedStatus] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const parallaxOffset = useParallax(0.2);
+  const { totalTickets, totalSpent } = useUser();
 
   const tickets: UserTicket[] = [
     {
@@ -118,7 +120,6 @@ const MyTickets = () => {
     return 'Завершено';
   };
 
-  const totalSpent = tickets.reduce((sum, ticket) => sum + ticket.ticketPrice, 0);
   const activeTickets = tickets.filter(t => t.status === 'active').length;
   const wonTickets = tickets.filter(t => t.status === 'won').length;
 
@@ -167,7 +168,7 @@ const MyTickets = () => {
                   <Ticket className="h-6 w-6 text-emerald-600" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-emerald-600">{tickets.length}</div>
+                  <div className="text-2xl font-bold text-emerald-600">{totalTickets}</div>
                   <div className="text-gray-600 text-sm">Всього квитків</div>
                 </div>
               </div>
