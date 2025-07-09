@@ -6,7 +6,7 @@ const Logo = () => {
       <img 
         src="/Знімок екрана 2025-07-09 201138.png" 
         alt="LuckyFate Logo"
-        className="h-48 w-auto object-contain opacity-100 drop-shadow-2xl"
+        className="h-24 w-auto object-contain opacity-100 drop-shadow-2xl"
         style={{
           filter: 'drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5))'
         }}
