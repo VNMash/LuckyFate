@@ -81,16 +81,9 @@ const Header = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 ml-28">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="relative">
-              <img 
-                src="/Знімок екрана 2025-07-09 201138.png" 
-                alt="LuckyFate Logo"
-                className="h-8 w-auto object-contain mb-1"
-              />
-            </div>
             <div 
               className="p-2 rounded-lg shadow-lg transition-all duration-500"
               style={{
