@@ -8,7 +8,7 @@ const Logo = () => {
         alt="LuckyFate Logo"
         className="h-24 w-auto object-contain opacity-100 drop-shadow-2xl"
         style={{
-          filter: 'drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5))'
+          filter: 'drop-shadow(0 8px 24px rgba(0, 0, 0, 1))'
         }}
       />
     </div>
