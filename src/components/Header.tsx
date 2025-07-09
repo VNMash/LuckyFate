@@ -40,7 +40,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-red-700/10 shadow-lg overflow-hidden">
+    <header className="sticky top-0 z-40 border-b border-red-700/10 shadow-lg overflow-hidden">
       {/* Animated Background Layers */}
       <div className="absolute inset-0">
         {/* Base transparent background */}
