@@ -4,7 +4,7 @@ const Logo = () => {
   return (
     <div className="fixed top-0 left-0 z-[60]">
       <img 
-        src="/1315e586-9def-4101-81b6-1d42458f649e.jpg" 
+        src="/LogoLF.jpg" 
         alt="LuckyFate Logo"
         className="h-36 w-auto object-contain opacity-100 drop-shadow-2xl"
         style={{
