@@ -105,7 +105,7 @@ const Header = () => {
                 backgroundClip: 'text'
               }}
             >
-              LuckyHub
+              
             </span>
           </Link>
 
