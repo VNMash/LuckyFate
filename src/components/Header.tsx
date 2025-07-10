@@ -80,7 +80,7 @@ const Header = () => {
         ></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-1 relative z-10">
         <div className="flex items-center justify-between h-16 ml-28">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
