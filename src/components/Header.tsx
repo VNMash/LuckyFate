@@ -92,7 +92,7 @@ const Header = () => {
                   : 'linear-gradient(135deg, #dc2626, #ffffff)'
               }}
             >
-              Trophy className="h-6 w-6 text-cyan-300" />
+              <Trophy className="h-6 w-6 text-cyan-300" />
             </div>
             <span 
               className="text-xl font-bold transition-all duration-500"
