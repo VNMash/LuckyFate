@@ -83,7 +83,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16 ml-28">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-1">
+          <Link to="/" className="flex  space-x-3">
             <div 
               className="p-2 rounded-lg shadow-lg transition-all duration-500"
               style={{
