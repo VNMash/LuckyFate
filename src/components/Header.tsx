@@ -80,12 +80,12 @@ const Header = () => {
         ></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16 ml-28">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <div 
-              className="p-0 rounded-lg shadow-lg transition-all duration-500"
+              className="p-2 rounded-lg shadow-lg transition-all duration-500"
               style={{
                 background: scrollProgress > 0.2 
                   ? 'linear-gradient(135deg, #dc2626, #991b1b)' 
