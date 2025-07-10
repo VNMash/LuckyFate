@@ -83,7 +83,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16 ml-28">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-1">
             <div 
               className="p-2 rounded-lg shadow-lg transition-all duration-500"
               style={{
@@ -92,7 +92,7 @@ const Header = () => {
                   : 'linear-gradient(135deg, #dc2626, #ffffff)'
               }}
             >
-              <Trophy className="h-6 w-6 text-cyan-300" />
+              <Trophy className="h-8 w-8 text-cyan-300" />
             </div>
             <span 
               className="text-xl font-bold transition-all duration-500"
