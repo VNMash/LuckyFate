@@ -2,7 +2,7 @@ import React from 'react';
 
 const Logo = () => {
   return (
-    <div className="fixed top-2 left-2 z-[60]">
+    <div className="fixed top-2 left-24 z-[60]">
       <img 
         src="/LogoLF.jpg" 
         alt="LuckyFate Logo"
