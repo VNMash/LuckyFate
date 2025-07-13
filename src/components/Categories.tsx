@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Smartphone, Car, Home, Plane, Gamepad2, Gem, Gift, Briefcase } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+
 
 const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState('electronics');
