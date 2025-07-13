@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Smartphone, Car, Home, Plane, Gamepad2, Gem, Gift, Briefcase } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState('electronics');
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const navigate = useNavigate();
 
   const categories = [
     { 
@@ -202,7 +204,14 @@ const Categories = () => {
                       <p className="text-amber-100 mb-3">{category.description}</p>
                       <div className="flex items-center justify-between">
                         <span className="text-amber-300 font-semibold">{category.count} активних лотерей</span>
-                        <button className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-2000 flex items-center space-x-2">
+                        <button 
+                          onClick={() => {
+                            if (category.id === 'cars') {
+                              navigate('/cars');
+                            }
+                          }}
+                          className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-2000 flex items-center space-x-2"
+                        >
                           <span>Переглянути</span>
                           <span>→</span>
                         </button>
