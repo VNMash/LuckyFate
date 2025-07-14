@@ -13,7 +13,7 @@ const Profile = () => {
     id: '1',
     name: 'Володимир Іванович',
     email: 'vladimirkosovetskiy@gmail.com',
-    avatar: 'public/Waldemar.png',
+    avatar: '/Waldemar.png',
     joinDate: '2025-05-29',
     totalTickets,
     totalWins: 3,
