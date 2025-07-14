@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Car, Clock, Users, Ticket, Heart, Share2, Filter, SortDesc, Trophy, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../../contexts/UserContext';
+import { useUser } from '../contexts/UserContext';
 import { useParallax } from '../hooks/useParallax';
 
 const Cars = () => {
@@ -135,11 +135,11 @@ const Cars = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* BACKGROUND IMAGE with Parallax */}
+      {/* Background Image with Parallax */}
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: "url('/Black.jpg')",
+          backgroundImage: "url('https://cdn.pixabay.com/photo/2021/11/05/19/01/cappadocia-6771879_640.jpg')",
           transform: `translateY(${parallaxOffset}px)`
         }}
       />
@@ -177,7 +177,7 @@ const Cars = () => {
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-full shadow-2xl">
                 <Car className="h-10 w-10 text-white" />
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-orange-400 via-cyan-200 to-emerald-400 bg-clip-text text-transparent">
+              <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
                 Автомобілі
               </h1>
             </div>
@@ -196,15 +196,15 @@ const Cars = () => {
             }}
           >
             <div className="text-center bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:scale-105 transition-all duration-300">
-              <div className="text-4xl font-bold text-orange-400 mb-2">{carLotteries.length}</div>
+              <div className="text-4xl font-bold text-blue-400 mb-2">{carLotteries.length}</div>
               <div className="text-white/80">Доступних автомобілів</div>
             </div>
             <div className="text-center bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:scale-105 transition-all duration-300">
-              <div className="text-4xl font-bold text-cyan-200 mb-2">₴{carLotteries.reduce((sum, car) => sum + (car.ticketPrice * car.soldTickets), 0).toLocaleString()}</div>
+              <div className="text-4xl font-bold text-purple-400 mb-2">₴{carLotteries.reduce((sum, car) => sum + (car.ticketPrice * car.soldTickets), 0).toLocaleString()}</div>
               <div className="text-white/80">Загальна вартість призів</div>
             </div>
             <div className="text-center bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:scale-105 transition-all duration-300">
-              <div className="text-4xl font-bold text-emerald-400 mb-2">{Math.round(carLotteries.reduce((sum, car) => sum + (car.soldTickets / car.totalTickets), 0) / carLotteries.length * 100)}%</div>
+              <div className="text-4xl font-bold text-indigo-400 mb-2">{Math.round(carLotteries.reduce((sum, car) => sum + (car.soldTickets / car.totalTickets), 0) / carLotteries.length * 100)}%</div>
               <div className="text-white/80">Середня заповненість</div>
             </div>
           </div>
