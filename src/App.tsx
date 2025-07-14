@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Winners from './pages/Winners';
 import MyTickets from './pages/MyTickets';
 import Profile from './pages/Profile';
-import Cars from './pages/Cars';
+import Cars from './pages/categories/Cars';
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
             <Route path="/winners" element={<Winners />} />
             <Route path="/my-tickets" element={<MyTickets />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/cars" element={<Cars />} />
+            <Route path="/categories/cars" element={<Cars />} />
           </Routes>
           <Footer />
         </div>
