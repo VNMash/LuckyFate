@@ -35,7 +35,7 @@ const Cars = () => {
       ticketPrice: 800,
       totalTickets: 1500,
       soldTickets: 678,
-      endDate: '2025-01-10T14:00:00',
+      endDate: '2025-08-10T14:00:00',
       brand: 'Tesla',
       year: 2024,
       engine: 'Електричний',
