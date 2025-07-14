@@ -139,7 +139,7 @@ const Cars = () => {
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: "url('https://cdn.pixabay.com/photo/2021/11/05/19/01/cappadocia-6771879_640.jpg')",
+          backgroundImage: "url('/BlueFon.jpg')",
           transform: `translateY(${parallaxOffset}px)`
         }}
       />
