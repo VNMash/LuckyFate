@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Car, Clock, Users, Ticket, Heart, Share2, Filter, SortDesc, Trophy, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../../contexts/UserContext';
-import { useParallax } from '../../hooks/useParallax';
+import { useUser } from '../contexts/UserContext';
+import { useParallax } from '../hooks/useParallax';
 
 const Cars = () => {
   const [selectedFilter, setSelectedFilter] = useState('all');
@@ -14,18 +14,18 @@ const Cars = () => {
   const carLotteries = [
     {
       id: 'car-1',
-    title: 'BMW X5 2024',
-    description: 'Преміум кросовер з повним приводом, панорамним дахом та найсучаснішими технологіями безпеки',
-    image: 'https://images.pexels.com/photos/3136673/pexels-photo-3136673.jpeg?auto=compress&cs=tinysrgb&w=800',
-    ticketPrice: 500,
-    totalTickets: 2000,
-    soldTickets: 1245,
-    endDate: '2025-10-30T20:00:00', // Оновлено
-    brand: 'BMW',
-    year: 2024,
-    engine: '3.0L Twin Turbo',
-    power: '340 к.с.',
-    featured: true
+      title: 'BMW X5 2024',
+      description: 'Преміум кросовер з повним приводом, панорамним дахом та найсучаснішими технологіями безпеки',
+      image: 'https://images.pexels.com/photos/3136673/pexels-photo-3136673.jpeg?auto=compress&cs=tinysrgb&w=800',
+      ticketPrice: 500,
+      totalTickets: 2000,
+      soldTickets: 1245,
+      endDate: '2024-12-30T20:00:00',
+      brand: 'BMW',
+      year: 2024,
+      engine: '3.0L Twin Turbo',
+      power: '340 к.с.',
+      featured: true
     },
     {
       id: 'car-2',
@@ -35,7 +35,7 @@ const Cars = () => {
       ticketPrice: 800,
       totalTickets: 1500,
       soldTickets: 678,
-      endDate: '2025-08-10T14:00:00',
+      endDate: '2025-01-10T14:00:00',
       brand: 'Tesla',
       year: 2024,
       engine: 'Електричний',
