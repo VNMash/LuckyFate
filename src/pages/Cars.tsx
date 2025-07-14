@@ -135,11 +135,11 @@ const Cars = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Background Image with Parallax */}
+      {/* BACKGROUND IMAGE with Parallax */}
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: "url('/BlueFon.jpg')",
+          backgroundImage: "url('/98fb14e9-136d-428e-8f57-adda526352f6-removebg-preview.png')",
           transform: `translateY(${parallaxOffset}px)`
         }}
       />
