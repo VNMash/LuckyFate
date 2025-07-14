@@ -9,9 +9,9 @@ const Profile = () => {
 
   const userProfile: UserProfile = {
     id: '1',
-    name: 'Олександр Петренко',
-    email: 'oleksandr.petrenko@email.com',
-    avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300',
+    name: 'Володимир Іванович',
+    email: 'vladimirkosovetskiy@gmail.com',
+    avatar: 'public/Waldemar.png',
     joinDate: '2023-03-15',
     totalTickets: 47,
     totalWins: 3,
