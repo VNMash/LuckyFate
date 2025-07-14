@@ -14,11 +14,11 @@ const Profile = () => {
     name: 'Володимир Іванович',
     email: 'vladimirkosovetskiy@gmail.com',
     avatar: 'public/Waldemar.png',
-    joinDate: '2023-03-15',
+    joinDate: '2025-05-29',
     totalTickets,
     totalWins: 3,
     totalSpent,
-    favoriteCategories: ['Електроніка', 'Автомобілі', 'Подорожі'],
+    favoriteCategories: ['Сауна', 'Приколи', 'Подорожі'],
     achievements: [
       {
         id: '1',
