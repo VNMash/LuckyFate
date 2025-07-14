@@ -11,15 +11,15 @@ const Winners = () => {
   const winners: Winner[] = [
     {
       id: '1',
-      name: 'Оле Петренко',
+      name: 'Володимир Іванович',
       avatar: 'public/Waldemar.png',
-      prize: 'BMW X5 2024',
+      prize: 'BMW X7 2025',
       prizeImage: 'https://images.pexels.com/photos/3136673/pexels-photo-3136673.jpeg?auto=compress&cs=tinysrgb&w=400',
-      winDate: '2024-12-15',
+      winDate: '2025-07-15',
       ticketNumber: 'LH-2024-001847',
       prizeValue: 2500000,
       category: 'Автомобілі',
-      testimonial: 'Не вірив до останнього! Дякую LuckyHub за здійснення мрії!'
+      testimonial: 'Не вірив до останнього! Дякую Ісусу Христу і Його пророку Баптісту за здійснення мрії!'
     },
     {
       id: '2',
