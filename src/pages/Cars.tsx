@@ -137,7 +137,7 @@ const Cars = () => {
     <div className="min-h-screen relative overflow-hidden">
       {/* BACKGROUND IMAGE with Parallax */}
       <div 
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
+        className="fixed inset-0  bg-center bg-no-repeat"
         style={{ 
           backgroundImage: "url('/emerald.jpg')",
           transform: `translateY(${parallaxOffset}px)`
