@@ -140,7 +140,7 @@ const Cars = () => {
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{ 
           backgroundImage: "url('/emerald.jpg')",
-          {/*transform: `translateY(${parallaxOffset}px)`*/}
+          transform: `translateY(${parallaxOffset}px)`
         }}
       />
       
