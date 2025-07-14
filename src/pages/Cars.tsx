@@ -196,15 +196,15 @@ const Cars = () => {
             }}
           >
             <div className="text-center bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:scale-105 transition-all duration-300">
-              <div className="text-4xl font-bold text-blue-400 mb-2">{carLotteries.length}</div>
+              <div className="text-4xl font-bold text-orange-400 mb-2">{carLotteries.length}</div>
               <div className="text-white/80">Доступних автомобілів</div>
             </div>
             <div className="text-center bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:scale-105 transition-all duration-300">
-              <div className="text-4xl font-bold text-sky-800 mb-2">₴{carLotteries.reduce((sum, car) => sum + (car.ticketPrice * car.soldTickets), 0).toLocaleString()}</div>
+              <div className="text-4xl font-bold text-cyan-200 mb-2">₴{carLotteries.reduce((sum, car) => sum + (car.ticketPrice * car.soldTickets), 0).toLocaleString()}</div>
               <div className="text-white/80">Загальна вартість призів</div>
             </div>
             <div className="text-center bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:scale-105 transition-all duration-300">
-              <div className="text-4xl font-bold text-indigo-400 mb-2">{Math.round(carLotteries.reduce((sum, car) => sum + (car.soldTickets / car.totalTickets), 0) / carLotteries.length * 100)}%</div>
+              <div className="text-4xl font-bold text-emerald-400 mb-2">{Math.round(carLotteries.reduce((sum, car) => sum + (car.soldTickets / car.totalTickets), 0) / carLotteries.length * 100)}%</div>
               <div className="text-white/80">Середня заповненість</div>
             </div>
           </div>
