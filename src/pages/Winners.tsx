@@ -11,8 +11,8 @@ const Winners = () => {
   const winners: Winner[] = [
     {
       id: '1',
-      name: 'Олександр Петренко',
-      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150',
+      name: 'Оле Петренко',
+      avatar: 'public/Waldemar.png',
       prize: 'BMW X5 2024',
       prizeImage: 'https://images.pexels.com/photos/3136673/pexels-photo-3136673.jpeg?auto=compress&cs=tinysrgb&w=400',
       winDate: '2024-12-15',
