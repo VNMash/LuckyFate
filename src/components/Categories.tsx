@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Smartphone, Car, Home, Plane, Gamepad2, Gem, Gift, Briefcase } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-
 const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState('electronics');
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  const navigate = useNavigate();
   const navigate = useNavigate();
 
   const categories = [
@@ -210,24 +208,12 @@ const Categories = () => {
                           onClick={() => {
                             if (category.id === 'cars') {
                               navigate('/cars');
-                            } else {
-                              // Для інших категорій можна додати відповідні маршрути пізніше
-                              console.log(`Navigating to ${category.id} category`);
                             }
                           }}
                           className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-2000 flex items-center space-x-2"
                         >
                           <span>Переглянути</span>
-                          onClick={() => {
-                            if (category.id === 'cars') {
-                              navigate('/cars');
-                            } else {
-                              console.log(`Navigating to ${category.id} category`);
-                            }
-                          }}
-                          className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-300"
-                        >
-                          Переглянути
+                          <span>→</span>
                         </button>
                       </div>
                     </div>
