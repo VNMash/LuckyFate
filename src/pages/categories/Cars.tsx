@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Car, Clock, Users, Ticket, Heart, Share2, Filter, SortDesc, Trophy, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../contexts/UserContext';
-import { useParallax } from '../hooks/useParallax';
+import { useUser } from '../../contexts/UserContext';
+import { useParallax } from '../../hooks/useParallax';
 
 const Cars = () => {
   const [selectedFilter, setSelectedFilter] = useState('all');
@@ -139,7 +139,7 @@ const Cars = () => {
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: "url('/Black.jpg')",
+          backgroundImage: "url('/BlueFon.jpg')",
           transform: `translateY(${parallaxOffset}px)`
         }}
       />

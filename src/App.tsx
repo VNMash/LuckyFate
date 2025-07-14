@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Winners from './pages/Winners';
 import MyTickets from './pages/MyTickets';
 import Profile from './pages/Profile';
-import Cars from './pages/Cars';
+import Cars from './pages/categories/Cars';
 
 function App() {
   return (
