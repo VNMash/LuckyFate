@@ -200,7 +200,7 @@ const Cars = () => {
               <div className="text-white/80">Доступних автомобілів</div>
             </div>
             <div className="text-center bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:scale-105 transition-all duration-300">
-              <div className="text-4xl font-bold text-purple-800 mb-2">₴{carLotteries.reduce((sum, car) => sum + (car.ticketPrice * car.soldTickets), 0).toLocaleString()}</div>
+              <div className="text-4xl font-bold text-sky-800 mb-2">₴{carLotteries.reduce((sum, car) => sum + (car.ticketPrice * car.soldTickets), 0).toLocaleString()}</div>
               <div className="text-white/80">Загальна вартість призів</div>
             </div>
             <div className="text-center bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 hover:scale-105 transition-all duration-300">
