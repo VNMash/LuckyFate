@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Car, Clock, Users, Ticket, Heart, Share2, Filter, SortDesc, Trophy, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
-import { useParallax } from '../hooks/useParallax';
+import { useParallax } from '../../hooks/useParallax';
 
 const Cars = () => {
   const [selectedFilter, setSelectedFilter] = useState('all');
