@@ -177,7 +177,7 @@ const Cars = () => {
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-full shadow-2xl">
                 <Car className="h-10 w-10 text-white" />
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+              <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-emerald-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
                 Автомобілі
               </h1>
             </div>
