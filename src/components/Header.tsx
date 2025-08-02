@@ -36,7 +36,8 @@ const Header = () => {
   const navigationItems = [
     { label: 'Головна', href: '/' },
     { label: 'Переможці', href: '/winners' },
-    { label: 'Профіль', href: '/profile' }
+    { label: 'Профіль', href: '/profile' },
+    { label: 'Реєстрація', href: '/profile' },
   ];
 
   return (
