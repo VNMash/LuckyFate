@@ -37,7 +37,7 @@ const Header = () => {
     { label: 'Головна', href: '/' },
     { label: 'Переможці', href: '/winners' },
     { label: 'Профіль', href: '/profile' },
-    { label: 'Реєстрація', href: '' },
+    { label: 'Реєстрація', href: '/auth' },
   ];
 
   return (
