@@ -63,6 +63,13 @@ const Auth = () => {
     e.preventDefault();
     setIsLoading(true);
 
+    // Check if Supabase is properly configured
+    if (!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('placeholder')) {
+      showMessage('Supabase не налаштований. Будь ласка, налаштуйте змінні середовища.', 'error');
+      setIsLoading(false);
+      return;
+    }
+
     if (formData.password !== formData.confirmPassword) {
       showMessage('Паролі не співпадають!', 'error');
       setIsLoading(false);
@@ -126,6 +133,13 @@ const Auth = () => {
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+
+    // Check if Supabase is properly configured
+    if (!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('placeholder')) {
+      showMessage('Supabase не налаштований. Будь ласка, налаштуйте змінні середовища.', 'error');
+      setIsLoading(false);
+      return;
+    }
 
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
