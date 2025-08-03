@@ -33,11 +33,20 @@ const Auth = () => {
   ];
 
   useEffect(() => {
-    // Check if user is already logged in
+    // Only check user if Supabase is properly configured
     const checkUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        navigate('/profile');
+      if (!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('placeholder')) {
+        return; // Don't check if Supabase is not configured
+      }
+      
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          navigate('/profile');
+        }
+      } catch (error) {
+        // Silently handle error if Supabase is not properly configured
+        console.log('Supabase not configured, staying on auth page');
       }
     };
     checkUser();

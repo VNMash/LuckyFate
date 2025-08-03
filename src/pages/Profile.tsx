@@ -2,58 +2,29 @@ import React, { useState } from 'react';
 import { User, Settings, Trophy, Ticket, Calendar, Star, Edit, Camera, Shield, Bell, CreditCard, Gift } from 'lucide-react';
 import { useParallax } from '../hooks/useParallax';
 import { useUser } from '../contexts/UserContext';
-import type { UserProfile, Achievement } from '../types/navigation';
+import { supabase } from '../lib/supabase';
+import type { Achievement } from '../types/navigation';
+
+interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+  avatar: string;
+  joinDate: string;
+  totalTickets: number;
+  totalWins: number;
+  totalSpent: number;
+  favoriteCategories: string[];
+  achievements: Achievement[];
+}
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('overview');
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const parallaxOffset = useParallax(0.15);
   const { totalTickets, totalSpent } = useUser();
 
-  const userProfile: UserProfile = {
-    id: '1',
-    name: 'Володимир Іванович',
-    email: 'vladimirkosovetskiy@gmail.com',
-    avatar: '/Waldemar.png',
-    joinDate: '2025-05-29',
-    totalTickets,
-    totalWins: 3,
-    totalSpent,
-    favoriteCategories: ['Сауна', 'Приколи', 'Подорожі'],
-    achievements: [
-      {
-        id: '1',
-        title: 'Перший крок',
-        description: 'Купив свій перший лотерейний квиток',
-        icon: '🎫',
-        unlockedDate: '2023-03-15',
-        rarity: 'common'
-      },
-      {
-        id: '2',
-        title: 'Щасливчик',
-        description: 'Виграв свою першу лотерею',
-        icon: '🍀',
-        unlockedDate: '2023-05-22',
-        rarity: 'rare'
-      },
-      {
-        id: '3',
-        title: 'Колекціонер',
-        description: 'Купив квитки в 10 різних категоріях',
-        icon: '🏆',
-        unlockedDate: '2023-08-10',
-        rarity: 'epic'
-      },
-      {
-        id: '4',
-        title: 'Великий виграш',
-        description: 'Виграв приз вартістю понад ₴100,000',
-        icon: '💎',
-        unlockedDate: '2023-11-03',
-        rarity: 'legendary'
-      }
-    ]
-  };
 
   const tabs = [
     { id: 'overview', label: 'Огляд', icon: User },
