@@ -32,26 +32,6 @@ const Auth = () => {
     { icon: Star, color: 'text-orange-400', delay: '2.5s', size: 'w-4 h-4' }
   ];
 
-  useEffect(() => {
-    // Only check user if Supabase is properly configured
-    const checkUser = async () => {
-      if (!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('placeholder')) {
-        return; // Don't check if Supabase is not configured
-      }
-      
-      try {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user) {
-          navigate('/profile');
-        }
-      } catch (error) {
-        // Silently handle error if Supabase is not properly configured
-        console.log('Supabase not configured, staying on auth page');
-      }
-    };
-    checkUser();
-  }, [navigate]);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
