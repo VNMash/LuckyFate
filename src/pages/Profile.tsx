@@ -25,6 +25,102 @@ const Profile = () => {
   const parallaxOffset = useParallax(0.15);
   const { totalTickets, totalSpent } = useUser();
 
+  React.useEffect(() => {
+    const getUser = async () => {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          // Get profile data from profiles table
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', user.id)
+            .single();
+          
+          setUser({
+            ...user,
+            profile: profile || {
+              full_name: user.user_metadata?.full_name || 'Користувач',
+              email: user.email,
+              avatar_url: null
+            }
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    getUser();
+  }, []);
+
+  const userProfile: UserProfile = user ? {
+    id: user.id,
+    name: user.profile?.full_name || 'Користувач',
+    email: user.email || '',
+    avatar: user.profile?.avatar_url || '/Waldemar.png',
+    joinDate: user.created_at || new Date().toISOString(),
+    totalTickets,
+    totalWins: 3,
+    totalSpent,
+    favoriteCategories: ['Електроніка', 'Автомобілі', 'Подорожі'],
+    achievements: [
+      {
+        id: '1',
+        title: 'Перший крок',
+        description: 'Купив свій перший лотерейний квиток',
+        icon: '🎫',
+        unlockedDate: '2023-03-15',
+        rarity: 'common'
+      },
+      {
+        id: '2',
+        title: 'Щасливчик',
+        description: 'Виграв свою першу лотерею',
+        icon: '🍀',
+        unlockedDate: '2023-05-22',
+        rarity: 'rare'
+      }
+    ]
+  } : null;
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Завантаження профілю...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <User className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">Увійдіть в акаунт</h2>
+          <p className="text-gray-600 mb-6">Для перегляду профілю потрібно увійти в систему</p>
+          <a href="/auth" className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors">
+            Увійти
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  if (!userProfile) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-600">Помилка завантаження профілю</p>
+        </div>
+      </div>
+    );
+  }
 
   const tabs = [
     { id: 'overview', label: 'Огляд', icon: User },
