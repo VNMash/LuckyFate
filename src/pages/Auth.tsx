@@ -112,7 +112,8 @@ const Auth = () => {
 
         if (profileError) {
           console.error('Profile creation error:', profileError);
-          // Don't throw error here as user is already created
+          showMessage(`Профіль створено, але виникла помилка: ${profileError.message}`, 'error');
+          return;
         }
 
         showMessage('Реєстрація успішна! Перевірте свою пошту для підтвердження.', 'success');
@@ -156,7 +157,11 @@ const Auth = () => {
         }, 1500);
       }
     } catch (error: any) {
-      showMessage(error.message || 'Помилка входу', 'error');
+      if (error.message?.includes('Invalid login credentials')) {
+        showMessage('Невірний email або пароль. Перевірте дані або зареєструйтесь.', 'error');
+      } else {
+        showMessage(error.message || 'Помилка входу', 'error');
+      }
     } finally {
       setIsLoading(false);
     }
