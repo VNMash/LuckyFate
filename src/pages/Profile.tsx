@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { User, Settings, Trophy, Ticket, Calendar, Star, Edit, Camera, Shield, Bell, CreditCard, Gift } from 'lucide-react';
 import { useParallax } from '../hooks/useParallax';
 import { useUser } from '../contexts/UserContext';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import type { Achievement } from '../types/navigation';
 
 interface UserProfile {
@@ -27,6 +27,11 @@ const Profile = () => {
 
   React.useEffect(() => {
     const getUser = async () => {
+      if (!isSupabaseConfigured) {
+        setLoading(false);
+        return;
+      }
+      
       try {
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {

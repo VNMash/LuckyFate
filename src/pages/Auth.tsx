@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { User, Mail, Lock, Eye, EyeOff, Sparkles, Trophy, Star, Heart } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { useNavigate } from 'react-router-dom';
 import { useParallax } from '../hooks/useParallax';
 
@@ -52,9 +52,8 @@ const Auth = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Check if Supabase is properly configured
-    if (!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('placeholder')) {
-      showMessage('Supabase не налаштований. Будь ласка, налаштуйте змінні середовища.', 'error');
+    if (!isSupabaseConfigured) {
+      showMessage('Supabase не налаштований. Будь ласка, налаштуйте змінні середовища в .env файлі.', 'error');
       setIsLoading(false);
       return;
     }
@@ -124,9 +123,8 @@ const Auth = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Check if Supabase is properly configured
-    if (!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('placeholder')) {
-      showMessage('Supabase не налаштований. Будь ласка, налаштуйте змінні середовища.', 'error');
+    if (!isSupabaseConfigured) {
+      showMessage('Supabase не налаштований. Будь ласка, налаштуйте змінні середовища в .env файлі.', 'error');
       setIsLoading(false);
       return;
     }
