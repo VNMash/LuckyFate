@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Settings, Trophy, Ticket, Calendar, Star, Edit, Camera, Shield, Bell, CreditCard, Gift } from 'lucide-react';
+import { User, Settings, Trophy, Ticket, Calendar, Star, CreditCard as Edit, Camera, Shield, Bell, CreditCard, Gift } from 'lucide-react';
 import { useParallax } from '../hooks/useParallax';
 import { useUser } from '../contexts/UserContext';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
