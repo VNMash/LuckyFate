@@ -10,6 +10,7 @@ import MyTickets from './pages/MyTickets';
 import Profile from './pages/Profile';
 import Cars from './pages/categories/Cars';
 import RealEstate from './pages/categories/RealEstate';
+import Travel from './pages/categories/Travel';
 import Auth from './pages/Auth';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/cars" element={<Cars />} />
             <Route path="/real-estate" element={<RealEstate />} />
+            <Route path="/travel" element={<Travel />} />
             <Route path="/auth" element={<Auth />} />
           </Routes>
           <Footer />
