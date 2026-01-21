@@ -27,12 +27,22 @@ const Profile = () => {
 
   React.useEffect(() => {
     const getUser = async () => {
-      if (!isSupabaseConfigured) {
-        setLoading(false);
-        return;
-      }
-      
       try {
+        if (!isSupabaseConfigured) {
+          // Demo mode - show demo user
+          setUser({
+            id: 'demo-user-id',
+            email: 'demo@example.com',
+            profile: {
+              full_name: 'Демо Користувач',
+              email: 'demo@example.com',
+              avatar_url: '/Waldemar.png'
+            }
+          });
+          setLoading(false);
+          return;
+        }
+
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {
           // Get profile data from profiles table

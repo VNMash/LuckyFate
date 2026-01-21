@@ -52,12 +52,6 @@ const Auth = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    if (!isSupabaseConfigured) {
-      showMessage('Supabase не налаштований. Будь ласка, налаштуйте змінні середовища в .env файлі.', 'error');
-      setIsLoading(false);
-      return;
-    }
-
     if (formData.password !== formData.confirmPassword) {
       showMessage('Паролі не співпадають!', 'error');
       setIsLoading(false);
@@ -71,6 +65,17 @@ const Auth = () => {
     }
 
     try {
+      if (!isSupabaseConfigured) {
+        // Demo mode - simulate successful registration
+        showMessage('Демо режим: Реєстрація успішна! (Для повної функціональності налаштуйте Supabase)', 'success');
+        setTimeout(() => {
+          setIsLogin(true);
+          setFormData({ email: formData.email, password: '', confirmPassword: '', fullName: '' });
+        }, 2000);
+        setIsLoading(false);
+        return;
+      }
+
       // Sign up user
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: formData.email,
@@ -123,13 +128,17 @@ const Auth = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    if (!isSupabaseConfigured) {
-      showMessage('Supabase не налаштований. Будь ласка, налаштуйте змінні середовища в .env файлі.', 'error');
-      setIsLoading(false);
-      return;
-    }
-
     try {
+      if (!isSupabaseConfigured) {
+        // Demo mode - simulate successful login
+        showMessage('Демо режим: Вхід успішний! (Для повної функціональності налаштуйте Supabase)', 'success');
+        setTimeout(() => {
+          navigate('/profile');
+        }, 1500);
+        setIsLoading(false);
+        return;
+      }
+
       const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password
