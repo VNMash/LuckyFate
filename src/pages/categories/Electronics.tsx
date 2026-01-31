@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Smartphone, Clock, Users, Ticket, Heart, Share2, Filter, SortDesc, Trophy, Star, Cpu, Battery, Monitor } from 'lucide-react';
+import { Smartphone, Clock, Users, Ticket, Heart, Share2, Filter, Dessert as SortDesc, Trophy, Star, Cpu, Battery, Monitor } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
 import { useParallax } from '../../hooks/useParallax';
