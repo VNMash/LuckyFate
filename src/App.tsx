@@ -11,6 +11,7 @@ import Profile from './pages/Profile';
 import Cars from './pages/categories/Cars';
 import RealEstate from './pages/categories/RealEstate';
 import Travel from './pages/categories/Travel';
+import Electronics from './pages/categories/Electronics';
 import Auth from './pages/Auth';
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             <Route path="/cars" element={<Cars />} />
             <Route path="/real-estate" element={<RealEstate />} />
             <Route path="/travel" element={<Travel />} />
+            <Route path="/electronics" element={<Electronics />} />
             <Route path="/auth" element={<Auth />} />
           </Routes>
           <Footer />
