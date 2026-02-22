@@ -12,6 +12,7 @@ import Cars from './pages/categories/Cars';
 import RealEstate from './pages/categories/RealEstate';
 import Travel from './pages/categories/Travel';
 import Electronics from './pages/categories/Electronics';
+import Luxury from './pages/categories/Luxury';
 import Auth from './pages/Auth';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             <Route path="/real-estate" element={<RealEstate />} />
             <Route path="/travel" element={<Travel />} />
             <Route path="/electronics" element={<Electronics />} />
+            <Route path="/luxury" element={<Luxury />} />
             <Route path="/auth" element={<Auth />} />
           </Routes>
           <Footer />
