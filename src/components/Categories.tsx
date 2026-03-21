@@ -75,24 +75,32 @@ const Categories = () => {
   ];
 
   useEffect(() => {
-    const images = document.querySelectorAll('.category-card img');
-    let loadedCount = 0;
-    
-    const imageLoaded = () => {
-      loadedCount++;
-      if (loadedCount === images.length) {
-        setTimeout(() => setImagesLoaded(true), 1500);
-      }
-    };
+    const timer = setTimeout(() => {
+      const images = document.querySelectorAll('.category-card img');
+      let loadedCount = 0;
+      const totalImages = images.length;
 
-    images.forEach(img => {
-      if (img.complete) {
-        imageLoaded();
-      } else {
-        img.addEventListener('load', imageLoaded);
-        img.addEventListener('error', imageLoaded);
+      if (totalImages === 0) {
+        setImagesLoaded(true);
+        return;
       }
-    });
+
+      const imageLoaded = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setImagesLoaded(true);
+        }
+      };
+
+      images.forEach(img => {
+        if (img.complete) {
+          imageLoaded();
+        } else {
+          img.addEventListener('load', imageLoaded);
+          img.addEventListener('error', imageLoaded);
+        }
+      });
+    }, 100);
 
     // Auto-rotate categories
     const interval = setInterval(() => {
@@ -103,7 +111,10 @@ const Categories = () => {
       });
     }, 4000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
   }, []);
 
   return (
