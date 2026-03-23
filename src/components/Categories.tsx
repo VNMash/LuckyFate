@@ -188,6 +188,8 @@ const Categories = () => {
                               navigate('/gifts');
                             } else if (category.id === 'games') {
                               navigate('/games');
+                            } else if (category.id === 'services') {
+                              navigate('/services');
                             }
                           }}
                           className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-2000 flex items-center space-x-2"
@@ -239,7 +241,27 @@ const Categories = () => {
                   </div>
                   
                   {isSelected && (
-                    <button className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-2 rounded-lg font-medium">
+                    <button
+                      onClick={() => {
+                        if (category.id === 'cars') {
+                          navigate('/cars');
+                        } else if (category.id === 'real-estate') {
+                          navigate('/real-estate');
+                        } else if (category.id === 'travel') {
+                          navigate('/travel');
+                        } else if (category.id === 'electronics') {
+                          navigate('/electronics');
+                        } else if (category.id === 'luxury') {
+                          navigate('/luxury');
+                        } else if (category.id === 'gifts') {
+                          navigate('/gifts');
+                        } else if (category.id === 'games') {
+                          navigate('/games');
+                        } else if (category.id === 'services') {
+                          navigate('/services');
+                        }
+                      }}
+                      className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-2 rounded-lg font-medium">
                       Переглянути
                     </button>
                   )}

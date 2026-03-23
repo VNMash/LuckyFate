@@ -15,6 +15,7 @@ import Electronics from './pages/categories/Electronics';
 import Luxury from './pages/categories/Luxury';
 import Gifts from './pages/categories/Gifts';
 import Games from './pages/categories/Games';
+import Services from './pages/categories/Services';
 import Auth from './pages/Auth';
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
             <Route path="/luxury" element={<Luxury />} />
             <Route path="/gifts" element={<Gifts />} />
             <Route path="/games" element={<Games />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/auth" element={<Auth />} />
           </Routes>
           <Footer />
