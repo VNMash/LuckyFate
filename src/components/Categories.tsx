@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState('electronics');
-  const [imagesLoaded, setImagesLoaded] = useState(false);
   const navigate = useNavigate();
 
   const categories = [
@@ -75,34 +74,6 @@ const Categories = () => {
   ];
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const images = document.querySelectorAll('.category-card img');
-      let loadedCount = 0;
-      const totalImages = images.length;
-
-      if (totalImages === 0) {
-        setImagesLoaded(true);
-        return;
-      }
-
-      const imageLoaded = () => {
-        loadedCount++;
-        if (loadedCount === totalImages) {
-          setImagesLoaded(true);
-        }
-      };
-
-      images.forEach(img => {
-        if (img.complete) {
-          imageLoaded();
-        } else {
-          img.addEventListener('load', imageLoaded);
-          img.addEventListener('error', imageLoaded);
-        }
-      });
-    }, 100);
-
-    // Auto-rotate categories
     const interval = setInterval(() => {
       setSelectedCategory(prev => {
         const currentIndex = categories.findIndex(cat => cat.id === prev);
@@ -111,10 +82,7 @@ const Categories = () => {
       });
     }, 4000);
 
-    return () => {
-      clearTimeout(timer);
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -134,17 +102,6 @@ const Categories = () => {
           </p>
         </div>
 
-        {/* Loading Spinner */}
-        {!imagesLoaded && (
-          <div className="flex flex-col items-center justify-center py-20">
-            <div className="flex space-x-2 mb-4">
-              <div className="w-4 h-4 bg-amber-600 rounded-full animate-bounce"></div>
-              <div className="w-4 h-4 bg-yellow-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-              <div className="w-4 h-4 bg-orange-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-            </div>
-            <p className="text-amber-700 font-medium">Завантаження категорій...</p>
-          </div>
-        )}
 
         {/* Mobile Category Selector */}
         <div className="md:hidden mb-6">
@@ -162,7 +119,7 @@ const Categories = () => {
         </div>
 
         {/* Desktop Cards Container */}
-        <div className={`hidden md:flex gap-3 h-96 transition-opacity duration-1000 ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="hidden md:flex gap-3 h-96">
           {categories.map((category) => {
             const IconComponent = category.icon;
             const isSelected = selectedCategory === category.id;
@@ -248,7 +205,7 @@ const Categories = () => {
         </div>
 
         {/* Mobile Cards */}
-        <div className={`md:hidden space-y-4 transition-opacity duration-800 ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="md:hidden space-y-4">
           {categories.map((category) => {
             const IconComponent = category.icon;
             const isSelected = selectedCategory === category.id;
